@@ -1,3 +1,4 @@
+<?= var_dump($_POST); ?>
 <div class="message-page">
     <div class="message-page-container">
         <section class="message-info-section">
@@ -25,3 +26,4 @@
         </section>
     </div>
 </div>
+

@@ -40,5 +40,25 @@ class BookController
         $view = new View($book->getTitle());
         $view->render("showBook", ['book' => $book]);
     }
+
+    public function updateBook() : void
+    {
+        $id = Utils::request("id", -1);
+
+        $bookManager = new BookManager();
+        $book = $bookManager->getBookById($id);
+
+        if (!$book) {
+            throw new Exception("Le livre demandé n'existe pas.");
+        }
+
+        $view = new View("Modifier le livre");
+        $view->render("updateBook", ['book' => $book]);
+    }
+
+    public function updateBookInfo() : void
+    {
+        
+    }
     
 }

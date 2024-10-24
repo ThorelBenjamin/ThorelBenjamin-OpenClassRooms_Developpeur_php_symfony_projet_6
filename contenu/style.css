@@ -405,6 +405,7 @@ label {
 .title-connexion {
     margin-top: 130px;
     margin-left: 150px;
+    margin-left: 150px;
     font-family: "Playfair Display", serif;
     font-weight: 400;
     font-size: 36px;
@@ -423,18 +424,20 @@ label {
 
 input.input-form{
     margin-bottom: 32px;
+    width: 322px;
 }
 
 input[type=text], input[type=password]{
-    width: 322px;
     height: 50px;
     border-radius: 6px;
     border: 1px solid #f0f0f0;
 }
+
+
+
 input[type=submit] {
     background-color: var(--headerColor);
     height: 63px;
-    width: 322px;
     border-radius: 10px;
     padding: 22px, 38px, 22px, 38px;
     gap: 10px;
@@ -464,11 +467,18 @@ input[type=submit] {
 
 /** SHOWBOOK **/
 
-.showbook-container{
-    display: flex;
-    background-color: var(--secondaryColor);
+.showbook-page{
     margin-top : 44px;
     width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.showbook-container{
+    background-color: var(--secondaryColor);
+    width: 1440px;
+    display: flex;
+    align-items: center;
 }
 
 .showbook-img {
@@ -522,9 +532,21 @@ input[type=submit] {
 .showbook-user {
     width: 157px;
     height: 60px;
-    border: #292929 1px solid;
     margin-top: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
 
+.showbook-user-picture{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-left: 5px;
+    margin-right: 10px;
 }
 
 .showbook-button{
@@ -645,6 +667,8 @@ input[type=submit] {
     margin-left: 117px;
 }
 
+
+
 .input-form-dashboard {
     margin-bottom: 32px;
     background-color: #EDF2f6;
@@ -698,7 +722,6 @@ input[type=submit].button-info-save:hover {
 }
 
 .dashboard-table td {
-    height: 130px;
     font-family: "Inter";
     font-weight: 400;
     font-size: 12px;
@@ -727,7 +750,6 @@ input[type=submit].button-info-save:hover {
 
 .dashboard-table-description {
     width: 128px;
-    height: 62px;
     font-style: italic;
 }
 
@@ -761,4 +783,98 @@ input[type=submit].button-info-save:hover {
     margin-top: 55px;
     margin-left: 34px;
     margin-bottom: 27px;
+}
+
+/** UPDATE BOOK**/
+
+.update-book-page{
+    width: 100%;
+    display: flex;
+    background-color: var(--secondaryColor);
+    justify-content: center;
+}
+
+.update-book-container
+{
+    width: 1440x;
+    display: flex;
+    flex-direction: column;
+}
+
+.update-book-form {
+    display: flex;
+    flex-direction: row;
+    width: 1141px;
+    height: 941px;
+    margin-top: 23px;
+    justify-content: space-around;
+    background-color: #FFFFFF;
+}
+
+.update-book-picture{
+    width: 488px;
+    height: 488px;
+}
+
+.update-first-section
+{
+    display: flex;
+    flex-direction: column;
+    margin-top: 56px;
+}
+
+.update-second-section
+{
+    display: flex;
+    flex-direction: column;
+    margin-top: 56px;
+}
+
+.update-book-back{
+    margin-top: 40px;
+}
+
+.update-book-title{
+    margin-top: 23px;
+    font-family: "Playfair Display", serif;
+    font-size: 26px;
+    font-weight: 400; 
+}
+
+.input-form-update {
+    margin-bottom: 32px;
+    background-color: #EDF2f6;
+    margin-top: 10px;
+    padding-left: 14px;
+
+}
+
+textarea{
+    width: 435px;
+    height: 356px;
+    background-color: #EDF2f6;
+    border-radius: 6px;
+    border: 1px solid #f0f0f0;
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 32px;
+    padding: 14px 14px 14px 14px;
+}
+
+select{
+    margin-bottom: 32px;
+    background-color: #EDF2f6;
+    margin-top: 10px;
+    border: 1px solid #f0f0f0;
+    width: 435px;
+    height: 50px;
+    padding: 14px 14px 14px 14px;
+}
+
+input[value]{
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 14px;
 }

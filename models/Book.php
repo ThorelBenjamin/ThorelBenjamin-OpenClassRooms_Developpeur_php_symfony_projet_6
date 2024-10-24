@@ -14,6 +14,7 @@ class Book extends AbstractEntity
     private int $userId;
     private DateTime $insertAt;
     private string $username;
+    private string $userLogo;
 
     public function setIdBook(int $idBook) : void 
     {
@@ -81,9 +82,13 @@ class Book extends AbstractEntity
         $this->status = $status;
     }
 
-    public function getStatus() : int 
+    public function getStatus() : string 
     {
-        return $this->status;
+        if ($this->status == 1) {
+            return "disponible";
+        } else {
+            return "non dispo.";
+        }
     }
 
     public function setInsertAt(string|DateTime $insertAt, string $format = 'Y-m-d H:i:s') : void 
@@ -107,6 +112,16 @@ class Book extends AbstractEntity
     public function getUsername() : string 
     {
         return $this->username;
+    }
+
+    public function setUserLogo(string $userLogo) : void 
+    {
+        $this->userLogo = $userLogo;
+    }
+
+    public function getUserLogo() : string 
+    {
+        return $this->userLogo;
     }
 
 }

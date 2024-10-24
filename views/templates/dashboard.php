@@ -48,8 +48,8 @@
                             <td class="dashboard-table-title"><?= $book->getTitle() ?></td>
                             <td class="dashboard-table-author"><?= $book->getAuthor() ?></td>
                             <td class="dashboard-table-description"><?= $book->getDescription() ?></td>
-                            <td class="dashboard-table-available"></td>
-                            <td class="dashboard-table-edite"><a>Éditer</a></td>
+                            <td class="dashboard-table-available"><?= $book->getStatus() ?></td>
+                            <td class="dashboard-table-edite"><a href="index.php?action=updateBook&id=<?= $book->getIdBook() ?>">Éditer</a></td>
                             <td class="dashboard-table-delete"><a>Supprimer</a></td>
                         </tr>
                     <?php } ?>
