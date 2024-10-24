@@ -9,6 +9,9 @@ class Message extends AbstractEntity
     private string $messageText;
     private int $isRead;
     private DateTime $sentAt;
+    private string $username;
+    private string $userLogo;
+    private string $formattedSentAt;
 
 
     public function setIdMessage(int $idMessage) : void 
@@ -72,6 +75,36 @@ class Message extends AbstractEntity
     public function getSentAt() : DateTime 
     {
         return $this->sentAt;
+    }
+
+    public function setFormattedSentAt(string $formattedSentAt)
+    {
+        $this->formattedSentAt = $formattedSentAt;
+    }
+
+    public function getFormattedSentAt() : string
+    {
+        return $this->formattedSentAt;
+    }
+
+    public function setUsername(string $username) : void 
+    {
+        $this->username = $username;
+    }
+
+    public function getUsername() : string 
+    {
+        return $this->username;
+    }
+
+    public function setUserLogo(string $userLogo) : void 
+    {
+        $this->userLogo = $userLogo;
+    }
+
+    public function getUserLogo() : string 
+    {
+        return $this->userLogo;
     }
 
 }

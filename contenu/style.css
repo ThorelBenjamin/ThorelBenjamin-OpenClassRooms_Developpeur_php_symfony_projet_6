@@ -772,6 +772,44 @@ input[type=submit].button-info-save:hover {
     background-color: #FAF9F7;
 }
 
+.message-section-card{
+    width: 308px;
+    height: 84px;
+    display: flex;
+}
+
+.message-user-picture{
+    margin-left: 34px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.message-user-card{
+    width: 172px;
+    margin-left: 12px;
+}
+
+.message-user-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.message-user-username{
+    font-weight: normal;
+}
+
+.message-user-text {
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 12px;
+    color: #A6A6A6;
+}
+
 .message-text-section{
     width: 982px;
 }
@@ -783,6 +821,10 @@ input[type=submit].button-info-save:hover {
     margin-top: 55px;
     margin-left: 34px;
     margin-bottom: 27px;
+}
+
+.message-user-sent{
+    display: flex;
 }
 
 /** UPDATE BOOK**/
