@@ -3,7 +3,7 @@
         <section class="message-info-section">
             <h2 class="message-info-title">Messagerie</h2>
             <?php foreach($message as $messages) { ?>
-                <a href="index.php?action=message&senderid=<?= $messages->getSenderId() ?>">
+                <a href="index.php?action=message&senderId=<?= $messages->getSenderId() ?>">
                     <div class="message-section-card">
                         <img src="contenu/img/<?= $messages->getUserLogo() ?>" alt="picture user" class="message-user-picture">
                         <div class="message-user-card">
@@ -22,15 +22,29 @@
                 <img src="contenu/img/<?= $user->getUserLogo() ?>" alt="sent user logo" class="message-user-picture">
                 <h3><?= $user->getUsername() ?></h3>
             </div>
-            <article>
-                <!-- <div class="core-message">
-                    <img src="" alt=""><p>jour.mois heure:minute</p>
-                    <p>message</p>
-                </div> -->
+            <article class="core-message">
+                <div class="core-message-container">
+                    <?php foreach($messageSender as $messageSenders) { 
+                        $isUserSender = $messageSenders->getSenderId() === $_SESSION['userId'];
+                    ?>
+                        <div class="core-message-content <?= $isUserSender ? 'message-sent' : 'message-received' ?>">
+                            <img src="contenu/img/<?= $messageSenders->getUserLogo() ?>" alt="sent user logo" class="message-core-picture <?= $isUserSender ? 'message-sent-picture' : 'message-received-picture' ?>">
+                            <p><?= $messageSenders->getFormattedSentAt() ?></p>
+                        </div>   
+                        <p class="core-message-text <?= $isUserSender ? 'message-sent-text' : 'message-received' ?>"><?= $messageSenders->getMessageText() ?></p>
+                    <?php } ?>
+                    <form action="index.php?action=addMessage" method="post" class="message-form">
+
+                        <input type="text" name="messageText" id="messageText" class="input-form-message" placeholder="Tapez votre message ici">
+                        <input type="hidden" name="recipientId" value="<?= $user->getUserId(); ?>" >                        
+
+                        <input type="submit" value="Envoyé" class="submit-form-message">
+                    </form>
+                </div>
             </article>
         </section>
     </div>
 </div>
 
-<!-- <?= var_dump($_POST); ?>-->
-<?= var_dump($message); ?> 
+<!-- <?= var_dump($_POST); ?>
+<?= var_dump($messageSender); ?> -->

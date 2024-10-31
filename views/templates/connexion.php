@@ -9,7 +9,7 @@
                 <label>Password</label>
                 <input type="password" name="password" id="password" class="input-form">
 
-                <input type="submit" value="Connection" class="input-form">
+                <input type="submit" value="Connection" class="submit-form-connection">
                 <p>Pas de compte ? <a href="index.php?action=registration" class="form-link">Inscrivez-vous</a></p>
             </form>
             

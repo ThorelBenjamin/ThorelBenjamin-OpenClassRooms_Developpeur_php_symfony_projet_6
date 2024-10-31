@@ -7,14 +7,16 @@
     
     <div class="book-card-exchange">
             <?php foreach($books as $book) { ?>
-                <article class="card">
-                    <img src="contenu/img/<?= $book->getPicture() ?>" alt="" class="card-picture">
-                    <div class="card-content">
-                        <h4 class="card-title"><?= $book->getTitle() ?></h4>
-                        <p class="card-subtitle"><?= $book->getAuthor() ?></p>
-                        <p class="card-seller">vendu par : <?= $book->getUsername() ?></p>
-                    </div>
-                </article>
+                <a href="index.php?action=showBook&id=<?= $book->getIdBook() ?>">
+                    <article class="card">
+                        <img src="contenu/img/<?= $book->getPicture() ?>" alt="" class="card-picture">
+                        <div class="card-content">
+                            <h4 class="card-title"><?= $book->getTitle() ?></h4>
+                            <p class="card-subtitle"><?= $book->getAuthor() ?></p>
+                            <p class="card-seller">vendu par : <?= $book->getUsername() ?></p>
+                        </div>
+                    </article>
+                </a>
             <?php } ?>
         </div>
 </div>

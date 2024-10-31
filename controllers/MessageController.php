@@ -8,7 +8,7 @@ class MessageController
         $this->checkIfUserIsConnected();
 
         $userId = $_SESSION['userId'];
-        $senderId = $recipientId = Utils::request("senderid");
+        $senderId = $recipientId = Utils::request("senderId");
         
 
         $messageManager = new MessageManager();
@@ -20,6 +20,26 @@ class MessageController
 
         $view = new View("Messagerie");
         $view->render("message", ['message' => $message, 'messageSender' => $messageSender, 'user' => $user]);
+    }
+
+    public function addMessage() : void
+    {
+        $this->checkIfUserIsConnected();
+
+        $senderId = $_SESSION['userId'];
+        $recipientId = Utils::request("recipientId");
+        $messageText = Utils::request("messageText");
+
+        $message = new Message([
+            'senderId' => $senderId,
+            'recipientId' => $recipientId,
+            'messageText' => $messageText
+        ]);
+
+        $messageManager = new MessageManager();
+        $result = $messageManager->addMessage($message);
+
+        Utils::redirect("message&senderId=$recipientId");
     }
 
     private function checkIfUserIsConnected() : void

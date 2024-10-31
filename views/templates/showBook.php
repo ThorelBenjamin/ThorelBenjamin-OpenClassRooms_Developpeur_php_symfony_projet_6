@@ -16,7 +16,7 @@
                 <p><?= Utils::format($book->getUsername()) ?></p>
             </div>
             <form action="index.php?action=message" method="post">
-                <input type="hidden" name="user_id" value="<?= Utils::format($book->getUserId()) ?>">
+                <input type="hidden" name="senderId" value="<?= Utils::format($book->getUserId()) ?>">
                 <input type="submit" value="Envoyer un message" class="showbook-button">
             </form>
         </div>
