@@ -1,4 +1,6 @@
 <?php
+// En fonction des routes utilisées, il est possible d'avoir besoin de la session ; on la démarre dans tous les cas. 
+session_start();
 
 require_once 'config/_config.php';
 require_once 'config/autoload.php';
@@ -70,6 +72,11 @@ try {
         case 'addMessage': 
             $messageController = new MessageController();
             $messageController->addMessage();
+            break;
+        
+        case 'logout': 
+            $connectionController = new ConnectionController();
+            $connectionController->logout();
             break;
             
         default:
