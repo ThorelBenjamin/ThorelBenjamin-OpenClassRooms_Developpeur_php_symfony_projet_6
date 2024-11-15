@@ -42,7 +42,8 @@ class BookController
     }
 
     public function updateBook() : void
-    {
+{
+    try {
         $id = Utils::request("id", -1);
 
         $bookManager = new BookManager();
@@ -52,9 +53,17 @@ class BookController
             throw new Exception("Le livre demandé n'existe pas.");
         }
 
-        $view = new View("Modifier le livre");
-        $view->render("updateBook", ['book' => $book]);
+        if ($book->getUserId() == $_SESSION['userId']) {
+            $view = new View("Modifier le livre");
+            $view->render("updateBook", ['book' => $book]);
+        } else {
+            throw new Exception("Vous n'avez pas l'autorisation de modifier ce livre.");
+        }
+    } catch (Exception $e) {
+        $errorView = new View('Erreur');
+        $errorView->render('errorPage', ['errorMessage' => $e->getMessage()]);
     }
+}
 
     public function updateBookInfo() : void
     {

@@ -58,5 +58,18 @@ class MessageManager extends AbstractEntityManager
         ]);
     }
 
+    public function getUnreadMessageCount($user_id): array
+    {
+        $sql = "SELECT COUNT(*) AS unread_count FROM message WHERE recipient_id = :recipient_id AND is_read = 0";
+
+        $result = $this->db->query($sql, [
+            'recipient_id' => $recipientId
+        ]); 
+        $unreadMessage = $result->fetch();
+        if ($unreadMessage) {
+            return new Message($unreadMessage);
+        }
+        return $messages;
+    }
     
 }
