@@ -24,7 +24,7 @@
                     <option value="disponible">disponible</option>
                     <option value="non disponible">non disponible</option>
                 </select>
-                <input type="submit" value="Valider" class="input-form">
+                <input type="submit" value="Valider" class="input-update">
             </div>
         </form>
     </div>

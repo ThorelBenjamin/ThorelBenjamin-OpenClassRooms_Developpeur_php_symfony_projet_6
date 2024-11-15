@@ -7,9 +7,12 @@
                     <a href=# class="user-picture-update">modifier</a>
                     <div class="dashboard-line"></div>
                     <h4 class="user-username"><?= htmlspecialchars($user->getUsername()); ?></h4>
-                    <p class="user-seniority">Menbre depuis </p>
-                    <p>BIBLIOTHEQUE</p>
-                    <p>N livres</p>
+                    <p class="user-seniority">Membre depuis <?= $accountDuration ?></p>
+                    <p class="book-count-title">BIBLIOTHEQUE</p>
+                    <div class="dasboard-book-count">
+                        <img src="contenu/img/book_icon_dashboard" alt="icone de livre" class="dashboard-bibiliotheque-icone">
+                        <p><?= count($books); ?> livres</p>
+                    </div>
                 </article>
                 <article class="dasboard-info">
                     <h4 class="dashboard-info-title">Vos informations personnelles</h4>
@@ -47,10 +50,10 @@
                             <td class="dashboard-table-picture"><img src="contenu/img/<?= $book->getPicture() ?>" alt="picture book" class="table-picture"></td>
                             <td class="dashboard-table-title"><?= $book->getTitle() ?></td>
                             <td class="dashboard-table-author"><?= $book->getAuthor() ?></td>
-                            <td class="dashboard-table-description"><?= $book->getDescription() ?></td>
+                            <td ><div class="dashboard-table-description"><?= $book->getDescription() ?></div></td>
                             <td class="dashboard-table-available"><?= $book->getStatus() ?></td>
                             <td class="dashboard-table-edite"><a href="index.php?action=updateBook&id=<?= $book->getIdBook() ?>">Éditer</a></td>
-                            <td class="dashboard-table-delete"><a>Supprimer</a></td>
+                            <td class="dashboard-table-delete"><a href="#" class="dashboard-link-delete">Supprimer</a></td>
                         </tr>
                     <?php } ?>
                 </table>
