@@ -23,9 +23,15 @@
                     <a href="index.php?action=exchange" class="first-navbar-a <?= isset($_GET['action']) && $_GET['action'] === 'exchange' ? 'active' : '' ?>">Nos livres à l'échange</a>
                 </div>
                 <div class="second-navbar">
-                    <a href="index.php?action=message" class="<?= isset($_GET['action']) && $_GET['action'] === 'message' ? 'active' : '' ?>">
-                        <img src="contenu/img/icon_message.png" alt="message icon" class="nav_icon">Messagerie <span class="count-message"></span>
+                    <?php if (isset($_SESSION['userId'])): ?>
+                        <a href="index.php?action=message" class="<?= isset($_GET['action']) && $_GET['action'] === 'message' ? 'active' : '' ?>">
+                            <div class="messagerie-notification"><img src="contenu/img/icon_message.png" alt="message icon" class="nav_icon">Messagerie <span>1</span></div>
+                        </a>
+                    <?php else: ?>
+                        <a href="index.php?action=message" class="<?= isset($_GET['action']) && $_GET['action'] === 'message' ? 'active' : '' ?>">
+                        <img src="contenu/img/icon_message.png" alt="message icon" class="nav_icon">Messagerie
                     </a>
+                    <?php endif; ?>
                     <a href="index.php?action=dashboard" class="<?= isset($_GET['action']) && $_GET['action'] === 'dashboard' ? 'active' : '' ?>">
                         <img src="contenu/img/icon_user.jpg" alt="user icon" class="nav_icon">Mon compte
                     </a>

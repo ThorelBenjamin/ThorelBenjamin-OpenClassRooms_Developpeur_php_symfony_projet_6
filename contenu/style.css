@@ -54,6 +54,25 @@ nav{
     display: flex;
 }
 
+.messagerie-notification{
+    display: flex;
+}
+
+.second-navbar span {
+    background-color: black;
+    color: white;
+    margin-left: 3px;
+    display: flex;
+    width: 10.5px;
+    height: 15px;
+    padding-top:3px ;
+    border-radius: 6.75px;
+    justify-content: center;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 8.25px;
+}
+
 .nav_icon {
     height: 13px;
     margin-right: 4px;
@@ -86,6 +105,15 @@ a {
 .active {
     font-weight: bold;
 }
+
+.count-message{
+    color: white;
+    background-color: #292929;
+    align-items: center;
+    font-family: "Inter", sans-serif;
+    font-size: 8.25px;
+    font-weight: 700;
+}
 /**      HOME    **/
 
 /** SECTION JOIN **/
@@ -110,12 +138,12 @@ a {
     flex-direction: column;
 }
 
-.join-img {
+.join-container img {
     width: 404px;
     height: 539px;
 }
 
-.join-title {
+.join-text h2 {
     font-family: "Playfair Display", serif;
     font-weight: 400;
     font-size: 36px;
@@ -131,7 +159,7 @@ h2 + p {
     margin-top: 5px; 
 }
 
-.button-discover {
+.join-text button {
     background-color: var(--headerColor);
     width: 152px;
     padding: 22px 38px 22px 38px;
@@ -144,7 +172,7 @@ h2 + p {
     font-size: 16px;
     margin-top: 35px;
 }
-.button-discover:hover {
+.join-text button:hover {
     background-color: var(--hoverColor);
     cursor: pointer;
 }
@@ -168,7 +196,7 @@ h2 + p {
     align-items: center;
 }
 
-.add-title {
+.last-add-container h3 {
     font-family: "Playfair Display", serif;
     font-size: 32px;
     font-weight: 400;
@@ -182,7 +210,7 @@ h2 + p {
     gap: 0px 38px;
 }
 
-.card-picture {
+.card img {
     width: 200px;
     height: 200px;
 }
@@ -194,7 +222,7 @@ h2 + p {
     font-family: "Inter", sans-serif;
 }
 
-.card-title{
+.card h4{
     width: 190px;
     white-space: nowrap;
     overflow: hidden;
@@ -205,7 +233,7 @@ h2 + p {
     margin-top: 20px;
 }
 
-.card-subtitle {
+.card div > p:first-of-type {
     font-size: 14px;
     font-weight: 400;
     padding-top: 10px;
@@ -213,7 +241,7 @@ h2 + p {
     color: #A6A6A6;
 }
 
-.card-seller {
+.card div > p:nth-of-type(2) {
     font-size: 10px;
     font-weight: 400;
     margin-left: 8px;
@@ -249,7 +277,7 @@ h2 + p {
     align-items: center;
 }
 
-.about-title {
+.about h3 {
     font-family: "Playfair Display", serif;
     font-weight: 400;
     font-size: 32px;
@@ -257,7 +285,7 @@ h2 + p {
     margin-top: 80px;
 }
 
-.about-text{
+.about > p:first-of-type{
     width: 397px;
     font-family: "Inter", sans-serif;
     font-weight: 300;
@@ -272,7 +300,7 @@ h2 + p {
     gap: 0px 36px;
 }
 
-.about-text-card{
+.about-card p{
     width: 215px;
     height: 139px;
     background-color: #FFFFFF;
@@ -285,13 +313,13 @@ h2 + p {
     justify-content: center;
 }
 
-.about-img{
+.about > img:first-of-type{
     width: 1440px;
     height: 230px;
     margin-top: 80px;
 }
 
-.button-about {
+.about button {
     background-color: var(--backgroundColor);
     width: 238px;
     padding: 22px 38px 22px 38px;
@@ -304,7 +332,7 @@ h2 + p {
     margin-top: 35px;
 }
 
-.button-about:hover {
+.about button:hover {
     background-color: var(--hoverColor);
     cursor: pointer;
     color: white;
@@ -315,13 +343,13 @@ h2 + p {
     margin-top: 80px;
 }
 
-.about-value-title{
+.about-value h4{
     font-family: "Playfair Display", serif;
     font-weight: 400;
     font-size: 32px;
 }
 
-.about-text-content{
+.about-value h4 + div{
     font-family: "Inter", sans-serif;
     font-weight: 300;
     font-size: 16px;
@@ -329,7 +357,7 @@ h2 + p {
     margin-top: 39px;
 }
 
-.about-value-signature{
+.about-value > div:last-of-type{
     display: flex;
     justify-content: space-between;
     color: #A6A6A6;
@@ -382,23 +410,41 @@ footer img{
     justify-content: space-between;
 }
 
-.exchange-title{
+.exchange-header h2{
     font-family: "Playfair Display", serif;
     font-size: 36px;
     font-weight: 400; 
 }
 
+.exchange-search{
+    display: flex;
+}
+
+.search-logo {
+    border-radius: 10px 0px 0px 10px;
+    width: 40px;
+    height: 50px;
+    justify-content: center;
+    background-color: #FFFFFF;
+    border: 1px solid #F0F0F0;
+    border-right: none;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 17px;
+}
+
 input[type=search] {
     height: 50px;
-    width: 322px;
-    border-radius: 1px;
+    width: 282px;
+    border-radius: 0px 10px 10px 0px;
     font-family: "Inter", sans-serif;
     font-weight: 400;
     font-size: 14px;
     border: 1px solid #F0F0F0;
+    border-left: none;
 }
 
-.book-card-exchange {
+.exchange-card{
     width: 914px;
     display: flex;
     margin-top: 72px;
@@ -414,7 +460,7 @@ label {
     color: #A6A6A6;
 }
 
-.title-connexion {
+.connexion-page-section h2 {
     margin-top: 130px;
     margin-left: 150px;
     margin-left: 150px;
@@ -423,7 +469,7 @@ label {
     font-size: 36px;
 }
 
-.connexion-form {
+.connexion-page-section form {
     display: flex;
     flex-direction: column;
     margin-left: 150px;
@@ -471,7 +517,7 @@ input[type=submit] {
     width: 1440px;
 }
 
-.connexion-bookstore {
+.connexion-page-section > article:last-of-type {
     width: 720px;
     height: 886px;
 }
@@ -598,7 +644,7 @@ input[type=submit] {
     margin-left: 150px;
 }
 
-.dashboard-title{
+.dashboard-container h2{
     font-family: "Playfair Display", serif;
     font-size: 26px;
     font-weight: 400;
@@ -622,14 +668,14 @@ input[type=submit] {
     align-items: center;
 }
 
-.dashboard-user-picture{
+.dasboard-user > img {
     margin-top: 48px;
     width: 135px;
     height: 135px;
     border-radius: 50%;
 }
 
-.user-picture-update{
+.dasboard-user a{
     font-family: "Inter";
     font-weight: 400;
     font-size: 14px;
@@ -638,20 +684,20 @@ input[type=submit] {
     text-decoration: underline;
 }
 
-.dashboard-line{
-    height: 48px;
+hr{
+    margin-top: 48px;
     width: 242px;
-    border-bottom: 1px solid var(--backgroundColor);
+    border-top: 0px solid var(--backgroundColor);
     margin-bottom: 48px;
 }
 
-.user-username{
+.dasboard-user h4{
     font-family: "Playfair Display", serif;
     font-size: 24px;
     font-weight: 400; 
 }
 
-.book-count-title{
+.dasboard-user > p:nth-of-type(2){
     font-family: "Inter";
     font-weight: 600;
     font-size: 8px;
@@ -664,7 +710,7 @@ input[type=submit] {
     gap: 6px;
 }
 
-.user-seniority{
+.dasboard-user > p:nth-of-type(1){
     font-family: "Inter";
     font-weight: 400;
     font-size: 14px;
@@ -683,7 +729,7 @@ input[type=submit] {
     margin-bottom: 32px;
 }
 
-.dashboard-info-title{
+.dasboard-info h4{
     font-family: "Inter";
     font-weight: 400;
     font-size: 16px;
@@ -691,7 +737,7 @@ input[type=submit] {
     margin-top: 36px;
 }
 
-.dashboard-info-form {
+.dasboard-info form {
     display: flex;
     flex-direction: column;
     margin-left: 117px;
@@ -704,6 +750,7 @@ input[type=submit] {
     background-color: #EDF2f6;
     margin-top: 10px;
     width: 322px;
+    padding-left: 10px;
 }
 
 input[type=submit].button-info-save {
@@ -730,20 +777,22 @@ input[type=submit].button-info-save:hover {
     display: flex;
 }
 
-.dashboard-table {
+article table {
     border-collapse: collapse;
     width: 1135px;
+    border-radius: 30px;
+    
 }
 
-.dashboard-table tr{
+table tr{
     background-color: #EDF2f6;
 }
 
-.dashboard-table tr:nth-child(even){
+table tr:nth-child(even){
     background-color: #FFFFFF;
 }
 
-.dashboard-table th {
+table th {
     height: 53px;
     font-family: "Inter";
     font-weight: 600;
@@ -752,50 +801,90 @@ input[type=submit].button-info-save:hover {
     background-color: #FFFFFF;
 }
 
-.dashboard-table td {
+table td {
     font-family: "Inter";
     font-weight: 400;
     font-size: 12px;
     height: 130px;
 }
 
-.dashboard-table-picture{
-    width: 158px;
-    text-align: center;
+th:nth-child(1){
+    padding-left: 66px;
 }
 
-.table-picture{
+td:nth-child(1){
+    width: 224px;
+    padding-left: 66px;
+}
+
+td:nth-child(1) img{
     width: 78px;
     height: 78px;
 }
 
 
-.dashboard-table-title {
+td:nth-child(2) {
     width: 181px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.dashboard-table-author {
+.table-title{
+    width: 170px;
+    display: flex;
+}
+
+td:nth-child(3) {
     width: 175px;
 }
 
-.dashboard-table-description {
+td:nth-child(4) {
+    width: 213px;
+}
+
+td:nth-child(5){
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 8.88px;
+    color: #FFFFFF;
+    width: 146px;
+}
+
+.statut{
+    display: flex;
+    width: 72px;
+    height: 18.5px;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.statut-on{
+    background-color: #6DC5A1;
+}
+.statut-off {
+    background-color: #C56D6D;
+}
+
+td div{
     width: 128px;
     font-style: italic;
-    height: 62px;
+    height: auto;
     overflow: hidden;
-    white-space: wrap;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4; 
+    -webkit-box-orient: vertical;
     text-overflow: ellipsis;
 }
 
-.dashboard-table-edite{
-    text-decoration: underline;
-}
-
-.dashboard-link-delete{
+td:nth-child(7) a{
     text-decoration: underline;
     color: #CB2D2D;
+}
+
+td a{
+    text-decoration: underline;
 }
 
 /** MESSAGE **/
@@ -821,13 +910,13 @@ input[type=submit].button-info-save:hover {
     background-color: #FAF9F7;
 }
 
-.message-section-card{
+.message-info-section a > div{
     width: 308px;
     height: 84px;
     display: flex;
 }
 
-.message-user-picture{
+.user-picture{
     margin-left: 34px;
     width: 48px;
     height: 48px;
@@ -839,7 +928,7 @@ input[type=submit].button-info-save:hover {
     margin-left: 12px;
 }
 
-.message-user-info {
+.message-user-card > div:first-of-type {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -848,11 +937,11 @@ input[type=submit].button-info-save:hover {
     font-size: 14px;
 }
 
-.message-user-username{
+.message-user-card h3{
     font-weight: normal;
 }
 
-.message-user-text {
+.message-user-card > p:last-of-type {
     font-family: "Inter";
     font-weight: 400;
     font-size: 12px;
@@ -868,7 +957,7 @@ input[type=submit].button-info-save:hover {
     width: 982px;
 }
 
-.message-info-title{
+.message-info-section h2{
     font-family: "Playfair Display", serif;
     font-size: 26px;
     font-weight: 400; 
@@ -877,25 +966,25 @@ input[type=submit].button-info-save:hover {
     margin-bottom: 27px;
 }
 
-.message-core-picture{
+.core-message img{
     width: 24px;
     height: 24px;
     border-radius: 50%;
 }
 
-.core-message{
+.message-text-section article{
     margin-left: 42px;
     height: 712px;
     display: flex;
     align-items: flex-end;
 }
 
-.core-message-container{
+.core-message{
     display: flex;
     flex-direction: column;
 }
 
-.core-message-content{
+.core-message > div{
     display: flex;
     font-family: "Inter";
     font-weight: 400;

@@ -1,22 +1,22 @@
 <div class="dashboard">
     <div class="dashboard-container">
-        <h2 class="dashboard-title">Mon compte</h2>
+        <h2>Mon compte</h2>
         <div class="dashboard-first-section">
                 <article class="dasboard-user">
-                    <img src="contenu/img/<?= $user->getUserLogo() ?>" alt="" class="dashboard-user-picture">
-                    <a href=# class="user-picture-update">modifier</a>
-                    <div class="dashboard-line"></div>
-                    <h4 class="user-username"><?= htmlspecialchars($user->getUsername()); ?></h4>
-                    <p class="user-seniority">Membre depuis <?= $accountDuration ?></p>
-                    <p class="book-count-title">BIBLIOTHEQUE</p>
+                    <img src="contenu/img/<?= $user->getUserLogo() ?>" alt="">
+                    <a href="#">modifier</a>
+                    <hr />
+                    <h4><?= htmlspecialchars($user->getUsername()); ?></h4>
+                    <p>Membre depuis <?= $accountDuration ?></p>
+                    <p>BIBLIOTHEQUE</p>
                     <div class="dasboard-book-count">
-                        <img src="contenu/img/book_icon_dashboard" alt="icone de livre" class="dashboard-bibiliotheque-icone">
+                        <img src="contenu/img/book_icon_dashboard" alt="icone de livre">
                         <p><?= count($books); ?> livres</p>
                     </div>
                 </article>
                 <article class="dasboard-info">
-                    <h4 class="dashboard-info-title">Vos informations personnelles</h4>
-                    <form action="index.php?action=updateUser" method="post" class="dashboard-info-form">
+                    <h4>Vos informations personnelles</h4>
+                    <form action="index.php?action=updateUser" method="post">
                         <label>Adresse email</label>
                         <input type="text" name="email" id="email" value="<?= htmlspecialchars($user->getEmail()); ?>" class="input-form-dashboard">
 
@@ -34,8 +34,8 @@
         </div>
         
         <div class="dashboard-second-section">
-            <article class="dasboard-library">
-                <table class="dashboard-table">
+            <article>
+                <table>
                     <tr>
                         <th>PHOTO</th>
                         <th>TITRE</th>
@@ -47,13 +47,13 @@
                     </tr>
                     <?php foreach($books as $book) { ?>
                         <tr>
-                            <td class="dashboard-table-picture"><img src="contenu/img/<?= $book->getPicture() ?>" alt="picture book" class="table-picture"></td>
-                            <td class="dashboard-table-title"><?= $book->getTitle() ?></td>
-                            <td class="dashboard-table-author"><?= $book->getAuthor() ?></td>
-                            <td ><div class="dashboard-table-description"><?= $book->getDescription() ?></div></td>
-                            <td class="dashboard-table-available"><?= $book->getStatus() ?></td>
-                            <td class="dashboard-table-edite"><a href="index.php?action=updateBook&id=<?= $book->getIdBook() ?>">Éditer</a></td>
-                            <td class="dashboard-table-delete"><a href="#" class="dashboard-link-delete">Supprimer</a></td>
+                            <td><img src="contenu/img/<?= $book->getPicture() ?>" alt="picture book"></td>
+                            <td><span class="table-title"><?= $book->getTitle() ?></span></td>
+                            <td><?= $book->getAuthor() ?></td>
+                            <td><div><?= $book->getDescription() ?></div></td>
+                            <td><span class=" statut <?= $book->getStatus() === 'disponible' ? 'statut-on' : 'statut-off' ?>"><?= $book->getStatus() ?></span></td>
+                            <td><a href="index.php?action=updateBook&id=<?= $book->getIdBook() ?>">Éditer</a></td>
+                            <td><a href="#">Supprimer</a></td>
                         </tr>
                     <?php } ?>
                 </table>

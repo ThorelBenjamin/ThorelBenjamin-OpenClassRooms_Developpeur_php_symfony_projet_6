@@ -79,8 +79,12 @@ try {
             $connectionController->logout();
             break;
             
-        default:
-            throw new Exception("La page demandée n'existe pas.");
+            default:
+            http_response_code(404);
+        
+            $errorView = new View('Erreur 404');
+            $errorView->render('404Page', ['errorMessage' => "La page demandée n'existe pas."]);
+            break;
     }
 } catch (Exception $e) {
     $errorView = new View('Erreur');
