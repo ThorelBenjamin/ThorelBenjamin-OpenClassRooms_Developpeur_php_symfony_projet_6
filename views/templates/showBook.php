@@ -11,10 +11,12 @@
             Chaque page est une invitation à ralentir, à savourer et à créer des souvenirs durables avec les êtres chers. 
             'The Kinfolk Table' incarne parfaitement l'esprit de la cuisine et de la camaraderie, et il est certain que ce livre trouvera une place spéciale dans le cœur de tout amoureux de la cuisine et des rencontres inspirantes.</p>
             <h5 class="showbook-h5">PROPRIÉTAIRE</h5>
-            <div class="showbook-user">
-                <img src="contenu/img/<?= Utils::format($book->getUserLogo()) ?>" alt="user logo" class="showbook-user-picture">
-                <p><?= Utils::format($book->getUsername()) ?></p>
-            </div>
+            <a href="index.php?action=userPage&id=<?= Utils::format($book->getUserId()) ?>">
+                <div class="showbook-user">
+                    <img src="contenu/img/<?= Utils::format($book->getUserLogo()) ?>" alt="user logo" class="showbook-user-picture">
+                    <p><?= Utils::format($book->getUsername()) ?></p>
+                </div>
+            </a>
             <form action="index.php?action=message" method="post">
                 <input type="hidden" name="senderId" value="<?= Utils::format($book->getUserId()) ?>">
                 <input type="submit" value="Envoyer un message" class="showbook-button">
