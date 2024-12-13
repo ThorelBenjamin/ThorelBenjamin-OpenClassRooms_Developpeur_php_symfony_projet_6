@@ -32,24 +32,8 @@ class ConnectionController
 
         if ($user !== null && $user->getCreateAt() instanceof DateTime) {
             $accountCreationDate = $user->getCreateAt();
-            $currentDate = new DateTime();
-    
-            $difference = $currentDate->diff($accountCreationDate);
-            $months = $difference->m + ($difference->y * 12);
-    
-            if ($months < 1) {
-                $accountDuration = "moins d'un mois";
-            } elseif ($months === 1) {
-                $accountDuration = "1 mois";
-            } elseif ($months > 1 && $months < 6) {
-                $accountDuration = "plus d'un mois";
-            } elseif ($months >= 6 && $months < 12) {
-                $accountDuration = "6 mois";
-            } elseif ($months === 12) {
-                $accountDuration = "1 an";
-            } else {
-                $accountDuration = "plus d'un an";
-            }
+            
+            $accountDuration = Utils::userTime($accountCreationDate);
         }
         
         $view = new View("Mon compte");

@@ -87,4 +87,27 @@ class Utils {
         return $_REQUEST[$variableName] ?? $defaultValue;
     }
 
+    public static function userTime($accountCreationDate) {
+        $currentDate = new DateTime();
+    
+        $difference = $currentDate->diff($accountCreationDate);
+        $months = $difference->m + ($difference->y * 12);
+    
+        if ($months < 1) {
+            $accountDuration = "moins d'un mois";
+        } elseif ($months === 1) {
+            $accountDuration = "1 mois";
+        } elseif ($months > 1 && $months < 6) {
+            $accountDuration = "plus d'un mois";
+        } elseif ($months >= 6 && $months < 12) {
+            $accountDuration = "6 mois";
+        } elseif ($months === 12) {
+             $accountDuration = "1 an";
+        } else {
+            $accountDuration = "plus d'un an";
+        }
+
+        return $accountDuration;
+    }
+
 }
