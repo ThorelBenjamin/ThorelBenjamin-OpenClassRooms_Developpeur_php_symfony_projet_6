@@ -65,9 +65,33 @@ class BookController
     }
 }
 
-    public function updateBookInfo() : void
+    public function userPage() : void
     {
-        
+        try {
+            $id = Utils::request("id", -1);
+
+            $userManager = new UserManager();
+            $user = $userManager->getUserById($id);
+
+            $bookManager = new BookManager();
+            $book = $bookManager->getAllBooksFromUserId($user->getUserId());
+
+            if (!$user) {
+                throw new Exception("L'utilisateur demandé n'existe pas.");
+            }
+
+            if ($user !== null && $user->getCreateAt() instanceof DateTime) {
+                $accountCreationDate = $user->getCreateAt();
+                
+                $accountDuration = Utils::userTime($accountCreationDate);
+            }
+
+            $view = new View($user->getUsername());
+            $view->render("userPage", ['user' => $user, 'accountDuration' => $accountDuration, 'book' => $book]);
+        } catch (Exception $e) {
+            $errorView = new View('Erreur');
+            $errorView->render('errorPage', ['errorMessage' => $e->getMessage()]);
+        }
     }
     
 }

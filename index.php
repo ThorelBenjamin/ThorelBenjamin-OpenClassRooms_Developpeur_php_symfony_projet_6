@@ -64,6 +64,11 @@ try {
             $bookController->updateBook();
             break;
 
+        case 'userPage': 
+            $bookController = new BookController();
+            $bookController->userPage();
+            break;
+
         case 'updateBookInfo': 
             $bookController = new BookController();
             $bookController->updateBookInfo();
