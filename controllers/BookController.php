@@ -16,13 +16,24 @@ class BookController
         $view->render("home", ['books' => $lastBooks]);
     }
 
-    public function showDashboard() : void
+    public function showExchange() : void
     {
+        $query = Utils::request("search", "");
+
         $bookManager = new BookManager();
-        $books = $bookManager->getAllBooks();
+
+        if (!empty($query)) {
+            // Si un terme de recherche est fourni, chercher les livres correspondants
+            $books = $bookManager->searchBooks($query);
+            if (empty($books)) {
+                $books = [];
+            }
+        } else {
+            $books = $bookManager->getAllBooks();
+        }
 
         $view = new View("Livres à l'échange");
-        $view->render("exchange", ['books' => $books]);
+        $view->render("exchange", ['books' => $books, 'query' => $query]);
     }
     
     public function showBook() : void

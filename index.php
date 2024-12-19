@@ -26,7 +26,7 @@ try {
 
         case 'exchange':
             $bookController = new BookController();
-            $bookController->showDashboard();
+            $bookController->showExchange();
             break;
 
         case 'dashboard':

@@ -5,11 +5,11 @@
             <div class="search-logo">
                  <img src="contenu/img/search_logo.png" alt="search logo">
             </div>
-            <input type="search" id="search" name="search" placeholder="Rechercher un livre"/>
+            <form method="GET" action="index.php">
+                <input type="hidden" name="action" value="exchange">
+                <input type="search" id="search" name="search" placeholder="Rechercher un livre" value="<?= htmlspecialchars($query) ?>"/>
+            </form>
         </div>
-        
-        
-        
     </div>
 
     
