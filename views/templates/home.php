@@ -9,7 +9,9 @@
         <div class="join-text">
             <h2>Rejoingnez nos lecteurs pasionnés</h2>
             <p>Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres.</p>
-            <button>Découvrir</button>
+            <form action="index.php?action=exchange" method="post">
+                <input type="submit" value="Découvrir" />
+            </form>
         </div>
         <img src="contenu/img/hamza-nouasria.png" alt="hamza nouasria">
     </div>
@@ -32,7 +34,9 @@
                 </article>
             <?php } ?>
         </div>
-        <button class="button-last-add">Voir tout les livres</button>
+        <form action="index.php?action=exchange" method="post">
+            <input type="submit" value="Voir tout les livres" class="button-last-add" />
+        </form>
     </div>
 </section>
 
@@ -45,7 +49,9 @@
         <p>Parcourez les livres</br>disponnibles chez d'autres</br>membres.</p>
         <p>Proposez un échange et</br>discutez avec d'autres</br>passionnés de lecture.</p>
     </div>
-    <button>Voir tous les livres</button>
+    <form action="index.php?action=exchange" method="post">
+        <input type="submit" value="Voir tout les livres" class="button-last-add" />
+    </form>
     <img src="contenu/img/home-book.png" alt="home book">
     <div class="about-value">
         <h4>Nos valeurs</h4>
