@@ -66,10 +66,22 @@ class ConnectionController
 
     public function updateUser()
     {
-        $userId = Utils::request("userId");
+        $userId = Utils::request("user_id");
         $username = Utils::request("username");
         $password = Utils::request("password");
         $email = Utils::request("email");
+
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        $user = new User([
+            'userId' => $userId,
+            'username' => $username,
+            'password' => $hashedPassword,
+            'email' => $email
+        ]);
+
+        $userManager = new UserManager();
+        $result = $userManager->updateUser($user);
 
         Utils::redirect("dashboard");
     }
