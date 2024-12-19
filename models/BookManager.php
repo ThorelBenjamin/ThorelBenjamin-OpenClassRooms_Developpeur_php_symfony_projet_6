@@ -52,15 +52,38 @@ class BookManager extends AbstractEntityManager
     }
     
     public function searchBooks(string $query): array
-{
-    $sql = "SELECT library.*, user.username FROM library INNER JOIN user ON library.user_id = user.user_id WHERE library.title LIKE :query OR library.author LIKE :query";
-    $result = $this->db->query($sql, ['query' => '%' . $query . '%']);
-    $books = [];
+    {
+        $sql = "SELECT library.*, user.username FROM library INNER JOIN user ON library.user_id = user.user_id WHERE library.title LIKE :query OR library.author LIKE :query";
+        $result = $this->db->query($sql, ['query' => '%' . $query . '%']);
+        $books = [];
 
-    while ($book = $result->fetch()) {
-        $books[] = new Book($book);
+        while ($book = $result->fetch()) {
+            $books[] = new Book($book);
+        }
+        return $books;
     }
-    return $books;
-}
+
+
+    public function updateBook(int $id, string $title, string $author, string $description, string $status): bool
+    {
+        try {
+            $sql = "UPDATE library SET title = :title, author = :author, description = :description, status = :status WHERE id_book = :id";
+
+            $params = [
+                'id' => $id,
+                'title' => $title,
+                'author' => $author,
+                'description' => $description,
+                'status' => $status,
+            ];
+
+            $result = $this->db->query($sql, $params);
+
+            return $result !== false;
+        } catch (Exception $e) {
+            error_log("Erreur lors de la mise à jour du livre : " . $e->getMessage());
+            return false;
+        }
+    }
 
 } 

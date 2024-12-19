@@ -104,5 +104,31 @@ class BookController
             $errorView->render('errorPage', ['errorMessage' => $e->getMessage()]);
         }
     }
+
+    public function updateBookInfo(){
+        try {
+            $id = Utils::request("id", -1);
+            $title = Utils::request("title", "");
+            $author = Utils::request("author", "");
+            $description = Utils::request("description", "");
+            $status = Utils::request("status", "");
+    
+            // Appeler le modèle pour effectuer la mise à jour
+            $bookManager = new BookManager();
+            $success = $bookManager->updateBook($id, $title, $author, $description, $status);
+    
+            if ($success) {
+                // Rediriger ou afficher un message de succès
+                header("Location: index.php?action=dashboard");
+                exit();
+            } else {
+                throw new Exception("Une erreur est survenue lors de la mise à jour du livre.");
+            }
+        } catch (Exception $e) {
+            // Gérer les erreurs (rediriger ou afficher une page d'erreur)
+            $view = new View("Erreur");
+            $view->render("errorPage", ['errorMessage' => $e->getMessage()]);
+        }
+    }
     
 }

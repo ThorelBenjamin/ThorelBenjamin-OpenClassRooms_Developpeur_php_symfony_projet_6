@@ -20,10 +20,11 @@
                 
                 <label for="status">Disponibilité</label>
                 <select class="select-update" name="status">
-                    <option value="" disabled selected><?= Utils::format($book->getStatus()) ?></option>
-                    <option value="disponible">disponible</option>
-                    <option value="non disponible">non disponible</option>
+                    <option value="" disabled selected></option>
+                    <option value="1">disponible</option>
+                    <option value="0">non disponible</option>
                 </select>
+                <input type="hidden" name="id" value="<?= $book->getIdBook(); ?>" >
                 <input type="submit" value="Valider" class="input-update">
             </div>
         </form>
