@@ -10,7 +10,7 @@ class Book extends AbstractEntity
     private string $author;
     private string $picture;
     private string $description;
-    private int $status;
+    private int $status = 1;
     private int $userId;
     private DateTime $insertAt;
     private string $username;

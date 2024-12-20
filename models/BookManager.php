@@ -63,6 +63,20 @@ class BookManager extends AbstractEntityManager
         return $books;
     }
 
+    public function addBook(Book $book): void
+{
+    $sql = "INSERT INTO library (title, author, picture, description, status, insert_at, user_id) 
+            VALUES (:title, :author, :picture, :description, :status, NOW(), :user_id)";
+
+    $this->db->query($sql, [
+        'title'       => $book->getTitle(),
+        'author'      => $book->getAuthor(),
+        'picture'     => $book->getPicture(),
+        'description' => $book->getDescription(),
+        'status'      => $book->getStatus(),
+        'user_id'     => $book->getUserId()
+    ]);
+}
 
     public function updateBook(int $id, string $title, string $author, string $description, string $status): bool
     {
@@ -85,5 +99,12 @@ class BookManager extends AbstractEntityManager
             return false;
         }
     }
+
+    public function deleteBookById(int $idBook): void
+{
+    $sql = "DELETE FROM library WHERE id_book = :id_book";
+
+    $this->db->query($sql, ['id_book' => $idBook]);
+}
 
 } 

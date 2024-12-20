@@ -105,6 +105,47 @@ class BookController
         }
     }
 
+    public function CreateBook() : void
+    {
+
+        $view = new View("Création de livre");
+        $view->render("createBook", []);
+    }
+
+    public function addBook(){
+        try {
+            $userId = $_SESSION['userId'];
+            $title = Utils::request("title", "");
+            $author = Utils::request("author", "");
+            $picture = Utils::request("picture", "");
+            $description = Utils::request("description", "");
+            
+            $picture = "Livre_template.jpg";
+            
+            $book = new Book([
+                'user_id' => $userId,
+                'title' => $title,
+                'author' => $author,
+                'picture' => $picture,
+                'description' => $description
+                
+            ]);
+
+            $bookManager = new BookManager();
+            $result = $bookManager->addBook($book);
+            
+            
+            if ($book) {
+                Utils::redirect("dashboard");
+            } else {
+                throw new Exception("Une erreur est survenue lors de la création du livre.");
+            }
+        } catch (Exception $e) {
+            $view = new View("Erreur");
+            $view->render("errorPage", ['errorMessage' => $e->getMessage()]);
+        }
+    }
+
     public function updateBookInfo(){
         try {
             $id = Utils::request("id", -1);
@@ -113,22 +154,50 @@ class BookController
             $description = Utils::request("description", "");
             $status = Utils::request("status", "");
     
-            // Appeler le modèle pour effectuer la mise à jour
             $bookManager = new BookManager();
             $success = $bookManager->updateBook($id, $title, $author, $description, $status);
     
             if ($success) {
-                // Rediriger ou afficher un message de succès
+                
                 header("Location: index.php?action=dashboard");
                 exit();
             } else {
                 throw new Exception("Une erreur est survenue lors de la mise à jour du livre.");
             }
         } catch (Exception $e) {
-            // Gérer les erreurs (rediriger ou afficher une page d'erreur)
+            
             $view = new View("Erreur");
             $view->render("errorPage", ['errorMessage' => $e->getMessage()]);
         }
     }
+
+    public function deleteBook()
+{
+    try {
+        $idBook = Utils::request("id");
+
+        $bookManager = new BookManager();
+        $book = $bookManager->getBookById($idBook);
+
+        if (!$idBook) {
+            throw new Exception("L'identifiant du livre est manquant.");
+        }
+
+        if ($book->getUserId() == $_SESSION['userId']) {
+            $view = new View("Modifier le livre");
+            $view->render("updateBook", ['book' => $book]);
+        } else {
+            throw new Exception("Vous n'avez pas l'autorisation de supprimer ce livre.");
+        }
+
+        $bookManager = new BookManager();
+        $bookManager->deleteBookById($idBook);
+
+        Utils::redirect("dashboard");
+    } catch (Exception $e) {
+        $view = new View("Erreur");
+        $view->render("errorPage", ['errorMessage' => $e->getMessage()]);
+    }
+}
     
 }
