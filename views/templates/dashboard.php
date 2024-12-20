@@ -53,7 +53,7 @@
                             <td><div><?= $book->getDescription() ?></div></td>
                             <td><span class=" statut <?= $book->getStatus() === 'disponible' ? 'statut-on' : 'statut-off' ?>"><?= $book->getStatus() ?></span></td>
                             <td><a href="index.php?action=updateBook&id=<?= $book->getIdBook() ?>">Éditer</a></td>
-                            <td><a href="#">Supprimer</a></td>
+                            <td><a href="index.php?action=deleteBook&id=<?= $book->getIdBook() ?>">Supprimer</a></td>
                         </tr>
                     <?php } ?>
                 </table>

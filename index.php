@@ -48,10 +48,25 @@ try {
             $connectionController = new ConnectionController();
             $connectionController->updateUser();
             break;
+        
+        case 'createBook': 
+            $bookController = new BookController();
+            $bookController->createBook();
+            break;
+
+        case 'addBook': 
+            $bookController = new BookController();
+            $bookController->addBook();
+            break;
 
         case 'showBook': 
             $bookController = new BookController();
             $bookController->showBook();
+            break;
+
+        case 'deleteBook': 
+            $bookController = new BookController();
+            $bookController->deleteBook();
             break;
 
         case 'message': 

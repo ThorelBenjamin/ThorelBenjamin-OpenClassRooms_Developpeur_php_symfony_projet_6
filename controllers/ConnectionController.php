@@ -71,7 +71,15 @@ class ConnectionController
         $password = Utils::request("password");
         $email = Utils::request("email");
 
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $userManager = new UserManager();
+        $existingUser = $userManager->getUserById($userId);
+
+        if (!empty($password)) {
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        } else {
+            // Utiliser l'ancien mot de passe
+            $hashedPassword = $existingUser->getPassword();
+        }
 
         $user = new User([
             'userId' => $userId,
