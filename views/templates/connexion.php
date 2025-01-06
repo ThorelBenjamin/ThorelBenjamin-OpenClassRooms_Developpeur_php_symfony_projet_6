@@ -3,10 +3,10 @@
         <article>
             <h2>Connection</h2>
             <form action="index.php?action=connectUser" method="post">
-                <label for="pseudo">Pseudo</label>
+                <label for="username">Pseudo</label>
                 <input type="text" name="username" id="username" class="input-form">
 
-                <label>Password</label>
+                <label for="password">Password</label>
                 <input type="password" name="password" id="password" class="input-form">
 
                 <input type="submit" value="Connection" class="submit-form-connection">

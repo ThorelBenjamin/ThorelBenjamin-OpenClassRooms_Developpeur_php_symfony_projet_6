@@ -7,6 +7,7 @@
             </div>
             <form method="GET" action="index.php">
                 <input type="hidden" name="action" value="exchange">
+                <label for="search" class="visually-hidden">Rechercher un livre</label>
                 <input type="search" id="search" name="search" placeholder="Rechercher un livre" value="<?= htmlspecialchars($query) ?>"/>
             </form>
         </div>

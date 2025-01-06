@@ -17,13 +17,13 @@
                 <article class="dasboard-info">
                     <h4>Vos informations personnelles</h4>
                     <form action="index.php?action=updateUser" method="post">
-                        <label>Adresse email</label>
+                        <label for="email">Adresse email</label>
                         <input type="text" name="email" id="email" value="<?= htmlspecialchars($user->getEmail()); ?>" class="input-form-dashboard">
 
-                        <label>Mot de passe</label>
+                        <label for="password">Mot de passe</label>
                         <input type="password" name="password" id="password" class="input-form-dashboard">
 
-                        <label>Pseudo</label>
+                        <label for="username">Pseudo</label>
                         <input type="text" name="username" id="username" value="<?= htmlspecialchars($user->getUsername()); ?>" class="input-form-dashboard">
 
                         <!-- Champ caché pour l'ID utilisateur -->
@@ -43,7 +43,7 @@
                         <th>DESCRIPTION</th>
                         <th>DISPONIBILITE</th>
                         <th>ACTION</th>
-                        <th></th>
+                        <th><span class="visually-hidden">Actions supplémentaires</span></th>
                     </tr>
                     <?php foreach($books as $book) { ?>
                         <tr>
