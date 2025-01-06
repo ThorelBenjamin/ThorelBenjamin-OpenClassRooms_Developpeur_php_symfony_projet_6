@@ -110,4 +110,26 @@ class Utils {
         return $accountDuration;
     }
 
+    public static function paginate(array $items, int $currentPage, int $itemsPerPage): array
+    {
+        // Calculer le nombre total d'éléments et de pages
+        $totalItems = count($items);
+        $totalPages = (int) ceil($totalItems / $itemsPerPage);
+
+        // S'assurer que la page demandée est valide
+        $currentPage = max(1, min($currentPage, $totalPages));
+
+        // Calculer l'offset et récupérer les éléments pour la page actuelle
+        $offset = ($currentPage - 1) * $itemsPerPage;
+        $paginatedItems = array_slice($items, $offset, $itemsPerPage);
+
+        // Retourner les données paginées et les informations de navigation
+        return [
+            'items' => $paginatedItems,
+            'currentPage' => $currentPage,
+            'totalPages' => $totalPages,
+            'totalItems' => $totalItems,
+        ];
+    }
+
 }

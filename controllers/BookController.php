@@ -83,13 +83,18 @@ class BookController
 
             $userManager = new UserManager();
             $user = $userManager->getUserById($id);
+            $currentPage = Utils::request("page", 1);
+            $booksPerPage = 4;
 
             $bookManager = new BookManager();
             $book = $bookManager->getAllBooksFromUserId($user->getUserId());
 
+
             if (!$user) {
                 throw new Exception("L'utilisateur demandé n'existe pas.");
             }
+
+            $pagination = Utils::paginate($book, $currentPage, $booksPerPage);
 
             if ($user !== null && $user->getCreateAt() instanceof DateTime) {
                 $accountCreationDate = $user->getCreateAt();
@@ -98,7 +103,7 @@ class BookController
             }
 
             $view = new View($user->getUsername());
-            $view->render("userPage", ['user' => $user, 'accountDuration' => $accountDuration, 'book' => $book]);
+            $view->render("userPage", ['user' => $user, 'accountDuration' => $accountDuration, 'books' => $pagination['items'], 'currentPage' => $pagination['currentPage'], 'totalPages' => $pagination['totalPages']]);
         } catch (Exception $e) {
             $errorView = new View('Erreur');
             $errorView->render('errorPage', ['errorMessage' => $e->getMessage()]);
