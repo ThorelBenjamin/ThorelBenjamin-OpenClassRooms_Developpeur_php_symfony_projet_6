@@ -68,6 +68,7 @@ class BookController
      */
     public function updateBook() : void
     {
+        $this->checkIfUserIsConnected();
         try {
             $id = Utils::request("id", -1);
 
@@ -97,6 +98,7 @@ class BookController
      */
     public function userPage() : void
     {
+        $this->checkIfUserIsConnected();
         try {
             $id = Utils::request("id", -1);
 
@@ -148,6 +150,8 @@ class BookController
      */
     public function addBook()
     {
+        $this->checkIfUserIsConnected();
+
         try {
             $userId = $_SESSION['userId'];
             $title = Utils::request("title", "");
@@ -188,6 +192,8 @@ class BookController
      */
     public function updateBookInfo()
     {
+        $this->checkIfUserIsConnected();
+
         try {
             $id = Utils::request("id", -1);
             $title = Utils::request("title", "");
@@ -217,6 +223,8 @@ class BookController
      */
     public function deleteBook()
     {
+        $this->checkIfUserIsConnected();
+        
         try {
             $idBook = Utils::request("id");
 

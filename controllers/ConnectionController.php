@@ -56,6 +56,8 @@ class ConnectionController
      */
     public function addUser()
     {
+        $this->checkIfUserIsConnected();
+        
         $username = Utils::request("username");
         $password = Utils::request("password");
         $email = Utils::request("email");
@@ -86,6 +88,8 @@ class ConnectionController
      */
     public function updateUser()
     {
+        $this->checkIfUserIsConnected();
+
         $userId = Utils::request("user_id");
         $username = Utils::request("username");
         $password = Utils::request("password");
