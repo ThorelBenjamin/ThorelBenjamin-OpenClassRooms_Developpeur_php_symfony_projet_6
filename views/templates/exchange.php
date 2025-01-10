@@ -16,13 +16,13 @@
     
     <div class="exchange-card">
             <?php foreach($books as $book) { ?>
-                <a href="index.php?action=showBook&id=<?= $book->getIdBook() ?>">
+                <a href="index.php?action=showBook&id=<?= Utils::format($book->getIdBook()) ?>">
                     <article class="card">
                         <img src="contenu/img/<?= $book->getPicture() ?>" alt="">
                         <div>
-                            <h4><?= $book->getTitle() ?></h4>
-                            <p><?= $book->getAuthor() ?></p>
-                            <p>vendu par : <?= $book->getUsername() ?></p>
+                            <h4><?= Utils::format($book->getTitle()) ?></h4>
+                            <p><?= Utils::format($book->getAuthor()) ?></p>
+                            <p>vendu par : <?= Utils::format($book->getUsername()) ?></p>
                         </div>
                     </article>
                 </a>

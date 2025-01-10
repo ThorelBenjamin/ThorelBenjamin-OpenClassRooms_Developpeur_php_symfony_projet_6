@@ -3,15 +3,15 @@
         <section class="message-info-section">
             <h2>Messagerie</h2>
             <?php foreach($message as $messages) { ?>
-                <a href="index.php?action=message&senderId=<?= $messages->getSenderId() ?>">
+                <a href="index.php?action=message&senderId=<?= Utils::format($messages->getSenderId()) ?>">
                     <div>
-                        <img src="contenu/img/<?= $messages->getUserLogo() ?>" alt="picture user" class="user-picture">
+                        <img src="contenu/img/<?= Utils::format($messages->getUserLogo()) ?>" alt="picture user" class="user-picture">
                         <div class="message-user-card">
                             <div>
-                                <h3><?= $messages->getUsername() ?></h3>
-                                <p><?= $messages->getFormattedSentAt() ?></p>
+                                <h3><?= Utils::format($messages->getUsername()) ?></h3>
+                                <p><?= Utils::format($messages->getFormattedSentAt()) ?></p>
                             </div>
-                            <p><?= $messages->getMessageText() ?></p>
+                            <p><?= Utils::format($messages->getMessageText()) ?></p>
                         </div>
                     </div>
                 </a>
@@ -30,10 +30,10 @@
                         $isUserSender = $messageSenders->getSenderId() === $_SESSION['userId'];
                     ?>
                         <div class="<?= $isUserSender ? 'message-sent' : 'message-received' ?>">
-                            <img src="contenu/img/<?= $messageSenders->getUserLogo() ?>" alt="sent user logo" class="<?= $isUserSender ? 'message-sent-picture' : 'message-received-picture' ?>">
-                            <p><?= $messageSenders->getFormattedSentAt() ?></p>
+                            <img src="contenu/img/<?= Utils::format($messageSenders->getUserLogo()) ?>" alt="sent user logo" class="<?= $isUserSender ? 'message-sent-picture' : 'message-received-picture' ?>">
+                            <p><?= Utils::format($messageSenders->getFormattedSentAt()) ?></p>
                         </div>   
-                        <p class="core-message-text <?= $isUserSender ? 'message-sent-text' : 'message-received' ?>"><?= $messageSenders->getMessageText() ?></p>
+                        <p class="core-message-text <?= $isUserSender ? 'message-sent-text' : 'message-received' ?>"><?= Utils::format($messageSenders->getMessageText()) ?></p>
                     <?php } ?>
                     
                     <?php if ($user !== null): ?>

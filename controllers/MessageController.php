@@ -2,7 +2,11 @@
 
 class MessageController 
 {
-    
+    /**
+     * Affiche les messages d'un utilisateur avec un expéditeur spécifique.
+     * Vérifie si l'utilisateur est connecté avant d'afficher les messages entre l'utilisateur connecté et l'expéditeur.
+     * @return void
+     */
     public function showMessage() : void
     {
         $this->checkIfUserIsConnected();
@@ -22,6 +26,11 @@ class MessageController
         $view->render("message", ['message' => $message, 'messageSender' => $messageSender, 'user' => $user]);
     }
 
+    /**
+     * Envoie un message d'un utilisateur à un autre utilisateur.
+     * Vérifie si l'utilisateur est connecté avant d'envoyer le message.
+     * @return void
+     */
     public function addMessage() : void
     {
         $this->checkIfUserIsConnected();
@@ -42,6 +51,12 @@ class MessageController
         Utils::redirect("message&senderId=$recipientId");
     }
 
+    /**
+     * Vérifie si l'utilisateur est connecté.
+     * Si l'utilisateur n'est pas connecté (aucun identifiant utilisateur dans la session),
+     * il est redirigé vers la page de connexion.
+     * @return void
+     */
     private function checkIfUserIsConnected() : void
     {
         // On vérifie que l'utilisateur est connecté.

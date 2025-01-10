@@ -1,4 +1,3 @@
-<!-- <?= var_dump($user); ?> -->
 
 <div class="userpage">
     <div class="userpage-container">

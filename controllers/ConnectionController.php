@@ -12,12 +12,21 @@ class ConnectionController
         $view->render("connexion");
     }
 
+    /**
+     * Affiche la page d'inscription.
+     * @return void
+     */
     public function showRegistration() : void
     {
         $view = new View("Inscription");
         $view->render("registration");
     }
 
+    /**
+     * Affiche le tableau de bord de l'utilisateur connecté.
+     * Vérifie d'abord si l'utilisateur est connecté. Si oui, affiche ses informations et ses livres.
+     * @return void
+     */
     public function showDashboard() : void
     {
         $this->checkIfUserIsConnected();
@@ -40,6 +49,11 @@ class ConnectionController
         $view->render("dashboard", ['user' => $user, 'books' => $books, 'accountDuration' => $accountDuration]);
     }
 
+    /**
+     * Ajoute un nouvel utilisateur après avoir validé et haché le mot de passe.
+     * Redirige l'utilisateur vers le tableau de bord après l'ajout.
+     * @return void
+     */
     public function addUser()
     {
         $username = Utils::request("username");
@@ -64,6 +78,12 @@ class ConnectionController
         Utils::redirect("dashboard");
     }
 
+    /**
+     * Met à jour les informations d'un utilisateur.
+     * Si un nouveau mot de passe est fourni, il est haché avant la mise à jour.
+     * Redirige vers le tableau de bord après la mise à jour.
+     * @return void
+     */
     public function updateUser()
     {
         $userId = Utils::request("user_id");
@@ -94,6 +114,12 @@ class ConnectionController
         Utils::redirect("dashboard");
     }
 
+    /**
+     * Vérifie si l'utilisateur est connecté.
+     * Si l'utilisateur n'est pas connecté (aucun identifiant utilisateur dans la session),
+     * il est redirigé vers la page de connexion.
+     * @return void
+     */
     private function checkIfUserIsConnected() : void
     {
         // On vérifie que l'utilisateur est connecté.
@@ -102,6 +128,11 @@ class ConnectionController
         }
     }
 
+    /**
+     * Connecte un utilisateur après avoir vérifié ses informations de connexion.
+     * Si les informations sont correctes, l'utilisateur est redirigé vers son tableau de bord.
+     * @return void
+     */
     public function connectUser() : void 
     {
         // On récupère les données du formulaire.
@@ -132,8 +163,13 @@ class ConnectionController
         Utils::redirect("dashboard");
     }
 
+    /**
+     * Déconnecte un utilisateur en détruisant la session.
+     * L'utilisateur est ensuite redirigé vers la page de connexion.
+     * @return void
+     */
     public function logout(): void
-{
+    {
 
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
@@ -142,8 +178,7 @@ class ConnectionController
     $_SESSION = [];
 
     session_destroy();
-
     header("Location: index.php?action=connexion");
     exit();
-}
+    }
 }

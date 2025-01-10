@@ -1,9 +1,3 @@
-<?php
-    /**
-     * Affichage de Liste des articles. 
-     */
-?>
-
 <section class="join">
     <div class="join-container">
         <div class="join-text">
