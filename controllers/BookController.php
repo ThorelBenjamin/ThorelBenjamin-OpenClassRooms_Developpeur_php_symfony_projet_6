@@ -98,7 +98,7 @@ class BookController
      */
     public function userPage() : void
     {
-        $this->checkIfUserIsConnected();
+        
         try {
             $id = Utils::request("id", -1);
 
