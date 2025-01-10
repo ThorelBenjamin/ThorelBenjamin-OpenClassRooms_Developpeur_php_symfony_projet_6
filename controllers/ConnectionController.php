@@ -57,7 +57,7 @@ class ConnectionController
     public function addUser()
     {
         $this->checkIfUserIsConnected();
-        
+
         $username = Utils::request("username");
         $password = Utils::request("password");
         $email = Utils::request("email");
@@ -90,10 +90,14 @@ class ConnectionController
     {
         $this->checkIfUserIsConnected();
 
-        $userId = Utils::request("user_id");
+        $userId = Utils::request("user_id", null);
         $username = Utils::request("username");
         $password = Utils::request("password");
         $email = Utils::request("email");
+
+        if (empty($userId)) {
+            throw new Exception("L'identifiant de l'utilisateur est manquant.");
+        }
 
         $userManager = new UserManager();
         $existingUser = $userManager->getUserById($userId);

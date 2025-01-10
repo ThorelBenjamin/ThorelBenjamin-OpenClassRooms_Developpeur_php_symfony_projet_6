@@ -158,7 +158,13 @@ class BookController
             $author = Utils::request("author", "");
             $picture = Utils::request("picture", "");
             $description = Utils::request("description", "");
-            
+
+            if (empty($userId) || empty($title) || empty($author) || empty($description)) {
+                // Si un champ obligatoire est manquant, redirige vers le menu de création
+                Utils::redirect("createBook");
+                return;
+            }
+
             $picture = "Livre_template.jpg";
             
             $book = new Book([
@@ -195,11 +201,15 @@ class BookController
         $this->checkIfUserIsConnected();
 
         try {
-            $id = Utils::request("id", -1);
+            $id = Utils::request("id", null);
             $title = Utils::request("title", "");
             $author = Utils::request("author", "");
             $description = Utils::request("description", "");
             $status = Utils::request("status", "");
+
+            if (empty($idBook)) {
+                throw new Exception("L'identifiant du livre est manquant.");
+            }
 
             $bookManager = new BookManager();
             $success = $bookManager->updateBook($id, $title, $author, $description, $status);
@@ -226,7 +236,11 @@ class BookController
         $this->checkIfUserIsConnected();
         
         try {
-            $idBook = Utils::request("id");
+            $idBook = Utils::request("id", null);
+
+            if (empty($idBook)) {
+                throw new Exception("L'identifiant du livre est manquant.");
+            }
 
             $bookManager = new BookManager();
             $book = $bookManager->getBookById($idBook);
