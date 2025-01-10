@@ -102,6 +102,10 @@ class BookController
         try {
             $id = Utils::request("id", -1);
 
+            if ($id == '-1') {
+                throw new Exception("L'identifiant est manquant");
+            }
+
             $userManager = new UserManager();
             $user = $userManager->getUserById($id);
             $currentPage = Utils::request("page", 1);

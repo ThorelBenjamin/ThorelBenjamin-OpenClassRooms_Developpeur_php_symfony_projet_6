@@ -36,8 +36,12 @@ class MessageController
         $this->checkIfUserIsConnected();
 
         $senderId = $_SESSION['userId'];
-        $recipientId = Utils::request("recipientId");
-        $messageText = Utils::request("messageText");
+        $recipientId = Utils::request("recipientId", null);
+        $messageText = Utils::request("messageText", null);
+
+        if (empty($recipientId) || empty($messageText)) {
+            throw new Exception("Tous les champs sont obligatoires.");
+        }
 
         $message = new Message([
             'senderId' => $senderId,
